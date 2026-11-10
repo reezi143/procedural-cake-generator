@@ -5,7 +5,7 @@ import random
 
 # gui
 
-main_win = cmds.window(title='Make A Cake!', width=400)
+main_win = cmds.window(title='Make A Cake!', width=500)
 
 cmds.columnLayout(rowSpacing=10)
 
@@ -18,6 +18,8 @@ cmds.intSliderGrp('length', label='Length', min=8, max=28, step=2)
 
  # self.torso_rad_dspnbx = QtWidgets.QDoubleSpinBox() 
 
+ # CENTER
+
 cmds.checkBox('lightCandle', label='Light Candle') # make dark when unchecked?
 cmds.checkBox('includeTopper', label='Include Topper') # make dark when unchecked?
 
@@ -28,9 +30,7 @@ cmds.showWindow(main_win)
 
 #
 
-cake_width = 8
-cake_height = 27
-cake_length = cake_width # depth = length
+# depth = length
 
 # functions
 
@@ -164,7 +164,16 @@ def generate_cake(cake_width=8, cake_height=27, cake_length=8):
 # generate / create random cake
 
 def generate_random_cake():
-    pass
+    randWidth = random.randint(8, 28)
+    cake_width = randWidth
+    randHeight = random.randint(27, 42)
+    cake_height = randHeight
+    randLength = random.randint(8, 28)
+    cake_length = randLength
+
+    # cake
+    # cake = make_cake(cake_width, cake_height, cake_length)
+    make_cake(cake_width, cake_height, cake_length)
 
 
 
