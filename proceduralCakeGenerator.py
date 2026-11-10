@@ -1,6 +1,32 @@
 import maya.cmds as cmds
+import random
+
+
 
 # gui
+
+main_win = cmds.window(title='Make A Cake!', width=400)
+
+cmds.columnLayout(rowSpacing=10)
+
+cmds.text(label='Cake Generator')
+
+cmds.intSliderGrp('width', label='Width', min=8, max=28, step=2)
+cmds.intSliderGrp('height', label='Height', min=27, max=42, step=3)
+cmds.intSliderGrp('length', label='Length', min=8, max=28, step=2)
+
+
+ # self.torso_rad_dspnbx = QtWidgets.QDoubleSpinBox() 
+
+cmds.checkBox('lightCandle', label='Light Candle') # make dark when unchecked?
+cmds.checkBox('includeTopper', label='Include Topper') # make dark when unchecked?
+
+cmds.button(label='Create Cake', command='generate_cake()')
+
+
+cmds.showWindow(main_win)
+
+#
 
 cake_width = 8
 cake_height = 27
@@ -114,10 +140,31 @@ def make_cake(cake_width, cake_height, cake_length):
     # candle
     make_candle_stick(cake_height)
 
+    # light
+    if (cmds.checkBox('lightCandle', query=True, value=True) == True):
+        candle_flame = make_candle_flame(cake_height)
+
+    # topper
+    if (cmds.checkBox('includeTopper', query=True, value=True) == True):
+        cake_topper = make_cake_topper(cake_width, cake_height, cake_length)
+
 
 # generate / create cake 
 
+def generate_cake(cake_width=8, cake_height=27, cake_length=8):
+    cake_width = cmds.intSliderGrp('width', query=True, value=True)
+    cake_height = cmds.intSliderGrp('height', query=True, value=True)
+    cake_length = cmds.intSliderGrp('length', query=True, value=True)
+
+    # cake
+    make_cake(cake_width, cake_height, cake_length)
+
+
+
 # generate / create random cake
+
+def generate_random_cake():
+    pass
 
 
 
