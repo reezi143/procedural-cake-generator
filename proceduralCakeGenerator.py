@@ -3,24 +3,25 @@ import maya.cmds as cmds
 import random
 
 
-main_win = cmds.window(title='Make A Cake!', width=400)
+def test_win_function():
+    main_win = cmds.window(title='Make A Cake!!', width=400)
 
-cmds.columnLayout(rowSpacing=10)
+    cmds.columnLayout(rowSpacing=10)
 
-cmds.text(label='Cake Generator')
+    cmds.text(label='Cake Generator')
 
-cmds.intSliderGrp('width', label='Width', min=8, max=28, step=2)
-cmds.intSliderGrp('height', label='Height', min=27, max=42, step=3)
-cmds.intSliderGrp('length', label='Length', min=8, max=28, step=2)
+    cmds.intSliderGrp('width', label='Width', min=8, max=28, step=2)
+    cmds.intSliderGrp('height', label='Height', min=27, max=42, step=3)
+    cmds.intSliderGrp('length', label='Length', min=8, max=28, step=2)
 
-cmds.checkBox('lightCandle', label='Light Candle') # make dark when unchecked?
-cmds.checkBox('includeTopper', label='Include Topper') # center?
+    cmds.checkBox('lightCandle', label='Light Candle') # make dark when unchecked?
+    cmds.checkBox('includeTopper', label='Include Topper') # center?
 
-cmds.button(label='Create Cake', command='generate_cake()')
+    cmds.button(label='Create Cake', command='generate_cake()')
 
-cmds.button(label='Create Random-Sized Cake', command='generate_random_cake()')
+    cmds.button(label='Create Random-Sized Cake', command='generate_random_cake()')
 
-cmds.showWindow(main_win)
+    cmds.showWindow(main_win)
 
 
 def make_bottom_tier(cake_width, cake_height, cake_length):
@@ -129,3 +130,17 @@ def generate_random_cake():
     randLength = random.randint(8, 28)
     cake_length = randLength
     make_cake(cake_width, cake_height, cake_length)
+
+
+# shelf button
+
+
+def create_a_cake():
+    test_win_function()
+
+
+shelf_name = "Custom"
+icon_img = "cake_icon_img.png"
+
+cmds.shelfButton(label="Create A Cake!!", parent=shelf_name, 
+    image="cake_icon_img.png", command="create_a_cake()", style="iconOnly")
