@@ -8,4 +8,4 @@ Notes:
   Icon image must be in the Maya 2026 "Icon" folder.
   Button is added to shelf by pasting the code in the Maya Script Editor, and selecting and running
   "cmds.shelfButton(label="Create A Cake!!", parent=shelf_name, image="test_img.png", command="create_a_cake()", style="iconOnly")" which adds
-  the button to the shelf and automatically opens the "Create A Cake!!" window. 
+  the button to the shelf and allows the user to open the "Create A Cake!!" window. 
